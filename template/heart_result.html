@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Heart Risk Result</title>
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <a href="{% url 'heart' %}" class="back-link">&larr; Back to Form</a>
+    <h1 class="title">Heart Disease Risk Result</h1>
+
+    {% if error %}
+      <div class="result error">
+        {{ error }}
+      </div>
+    {% else %}
+      <div class="result success">
+        <h2>🔍 Random Forest Model</h2>
+        <p><strong>Result:</strong> {{ rf_result }}</p>
+        <p><strong>Risk Level:</strong> {{ rf_label }}</p>
+        <p><strong>Risk Percentage:</strong> {{ rf_risk }}</p>
+
+        <hr>
+
+        <h2>📊 Logistic Regression Model</h2>
+        <p><strong>Result:</strong> {{ lr_result }}</p>
+        <p><strong>Risk Level:</strong> {{ lr_label }}</p>
+        <p><strong>Risk Percentage:</strong> {{ lr_risk }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

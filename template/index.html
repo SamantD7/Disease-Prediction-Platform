@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Risk Navigator</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <h1>Health Risk Navigator</h1>
+    <p class="subheading">
+      Use our advanced prediction tools to assess your risk for various health conditions and receive personalized health recommendations.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h2>💖 Heart Disease Risk</h2>
+        <p class="card-subtitle">Evaluate your risk of cardiovascular disease based on clinical parameters</p>
+        <p class="card-text">
+          Our heart disease prediction model analyzes factors like age, blood pressure, cholesterol levels, and other health indicators to assess your cardiovascular health risk.
+        </p>
+        <a href="{% url 'heart' %}" class="button">Start Assessment</a>
+      </div>
+
+      <div class="card">
+        <h2>📈 Diabetes Risk</h2>
+        <p class="card-subtitle">Check your risk of developing diabetes based on health factors</p>
+        <p class="card-text">
+          Our diabetes prediction model evaluates key indicators such as glucose levels, BMI, age, and family history to determine your risk of developing diabetes.
+        </p>
+        <a href="{% url 'diabetes' %}" class="button">Start Assessment</a>
+      </div>
+      <div class="card">
+        <h2>🧠 Parkinson Disease</h2>
+        <p class="card-subtitle">Evaluate your risk of Parkinson disease based on clinical parameters</p>
+        <p class="card-text">
+          Our Parkinson disease prediction model analyzes factors like  age, genetics, and exposure to certain environmental toxins and other health indicators to assess your brain health risk.
+        </p>
+        <a href="{% url 'parkinson' %}" class="button">Start Assessment</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

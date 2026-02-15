@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parkinson's Disease Risk Assessment</title>
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <a href="{% url 'home' %}" class="back-link">&larr; Back to Home</a>
+    <h1 class="title">Parkinson's Disease Risk Assessment</h1>
+    <p class="subtitle">Fill in your voice measurements to assess Parkinson's risk.</p>
+    
+    <form class="form-card" method="post" action="{% url 'parkinson' %}">
+      {% csrf_token %}
+      <div class="form-grid">
+        <input type="number" name="mdvp_fo" placeholder="MDVP:Fo(Hz)" step="0.01" required />
+        <input type="number" name="mdvp_fhi" placeholder="MDVP:Fhi(Hz)" step="0.01" required />
+        <input type="number" name="mdvp_flo" placeholder="MDVP:Flo(Hz)" step="0.01" required />
+        <input type="number" name="mdvp_jitter" placeholder="MDVP:Jitter(%)" step="0.0001" required />
+        <input type="number" name="mdvp_shimmer" placeholder="MDVP:Shimmer" step="0.0001" required />
+        <input type="number" name="nhr" placeholder="NHR" step="0.0001" required />
+        <input type="number" name="hnr" placeholder="HNR" step="0.01" required />
+        <input type="number" name="rpde" placeholder="RPDE" step="0.0001" required />
+        <input type="number" name="dfa" placeholder="DFA" step="0.0001" required />
+        <input type="number" name="spread1" placeholder="Spread1" step="0.0001" required />
+        <input type="number" name="spread2" placeholder="Spread2" step="0.0001" required />
+        <input type="number" name="d2" placeholder="D2" step="0.0001" required />
+        <input type="number" name="ppe" placeholder="PPE" step="0.0001" required />
+      </div>
+
+      <button type="submit" class="submit-btn">Calculate Risk</button>
+    </form>
+  </div>
+</body>
+</html>

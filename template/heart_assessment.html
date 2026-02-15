@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heart Disease Risk Assessment</title>
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <a href="{% url 'home' %}" class="back-link">&larr; Back to Home</a>
+    <h1 class="title">Heart Disease Risk Assessment</h1>
+    <p class="subtitle">Fill in your health information to calculate your heart disease risk.</p>
+    
+    <form class="form-card" id="heartForm" method="post">
+      {% csrf_token %}
+      <div class="form-grid">
+        <input type="number" name="age" placeholder="Age" required />
+
+        <select name="sex" required>
+          <option value="" disabled selected>Gender</option>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select>
+
+        <select name="cp" required>
+          <option value="" disabled selected>Chest Pain Type</option>
+          <option value="0">Typical Angina</option>
+          <option value="1">Atypical Angina</option>
+          <option value="2">Non-anginal Pain</option>
+          <option value="3">Asymptomatic</option>
+        </select>
+
+        <input type="number" name="trestbps" placeholder="Resting Blood Pressure (mm Hg)" step="1" required />
+        <input type="number" name="chol" placeholder="Serum Cholesterol (mg/dl)" step="1" required />
+
+        <select name="fbs" required>
+          <option value="" disabled selected>Fasting Blood Sugar</option>
+          <option value="1">&gt; 120 mg/dl</option>
+          <option value="0">&le; 120 mg/dl</option>
+        </select>
+
+        <select name="restecg" required>
+          <option value="" disabled selected>Resting ECG Results</option>
+          <option value="0">Normal</option>
+          <option value="1">ST-T wave abnormality</option>
+          <option value="2">Left ventricular hypertrophy</option>
+        </select>
+
+        <input type="number" name="thalach" placeholder="Maximum Heart Rate Achieved" step="1" required />
+
+        <select name="exang" required>
+          <option value="" disabled selected>Exercise-Induced Angina</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+
+        <input type="number" name="oldpeak" placeholder="ST Depression (Oldpeak)" step="0.1" required />
+
+        <select name="slope" required>
+          <option value="" disabled selected>Slope of ST Segment</option>
+          <option value="0">Upsloping</option>
+          <option value="1">Flat</option>
+          <option value="2">Downsloping</option>
+        </select>
+
+        <select name="ca" required>
+          <option value="" disabled selected>Major Vessels Colored by Fluoroscopy</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+
+        <select name="thal" required>
+          <option value="" disabled selected>Thalassemia</option>
+          <option value="1">Normal</option>
+          <option value="2">Fixed Defect</option>
+          <option value="3">Reversible Defect</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">Calculate Risk</button>
+    </form>
+  </div>
+</body>
+</html>

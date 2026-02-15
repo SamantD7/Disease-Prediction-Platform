@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diabetes Risk Assessment</title>
+  <link rel="stylesheet" href="{% static 'css/style3.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <a href="{% url 'home' %}" class="back-link">&larr; Back to Home</a>
+    <h1>Diabetes Risk Assessment</h1>
+    <p class="subtitle">Fill in your health information to calculate your diabetes risk.</p>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" class="form-grid">
+      {% csrf_token %}
+
+<input type="number" name="age" placeholder="Age (years)" step="any" required />
+<input type="number" name="bmi" placeholder="Body Mass Index (BMI)" step="any" required />
+<input type="number" name="blood_pressure_systolic" placeholder="Systolic Blood Pressure" step="any" required />
+<input type="number" name="blood_pressure_diastolic" placeholder="Diastolic Blood Pressure" step="any" required />
+<input type="number" name="glucose" placeholder="Fasting Blood Glucose (mg/dL)" step="any" required />
+<input type="number" name="hba1c" placeholder="HbA1c (%)" step="any" required />
+<input type="number" name="cholesterol_total" placeholder="Total Cholesterol (mg/dL)" step="any" required />
+<input type="number" name="cholesterol_hdl" placeholder="HDL Cholesterol (mg/dL)" step="any" required />
+<input type="number" name="cholesterol_ldl" placeholder="LDL Cholesterol (mg/dL)" step="any" required />
+<input type="number" name="ggt" placeholder="GGT (U/L)" step="any" required />
+<input type="number" name="serum_urate" placeholder="Serum Urate (mg/dL)" step="any" required />
+<input type="number" name="dietary_calories" placeholder="Daily Calorie Intake" step="any" required />
+
+
+      <select name="family_history" required>
+        <option value="">Family History of Diabetes</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+
+      <select name="gestational_diabetes" required>
+        <option value="">Previous Gestational Diabetes</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+
+      <button type="submit">Calculate Risk</button>
+    </form>
+  </div>
+</body>
+</html>
